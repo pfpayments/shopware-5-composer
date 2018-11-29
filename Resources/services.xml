@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * PostFinance Checkout Shopware
+ *
+ * This Shopware extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/).
+ *
+ * @package PostFinanceCheckout_Payment
+ * @author customweb GmbH (http://www.customweb.com/)
+ * @license http://www.apache.org/licenses/LICENSE-2.0  Apache Software License (ASL 2.0)
+ */
+-->
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+    	<!-- Providers -->
+    	
+		<service id="postfinancecheckout_payment.provider.payment_method" class="PostFinanceCheckoutPayment\Components\Provider\PaymentMethod">
+            <argument type="service" id="postfinancecheckout_payment.api_client" />
+            <argument type="service" id="cache" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.provider.payment_connector" class="PostFinanceCheckoutPayment\Components\Provider\PaymentConnector">
+            <argument type="service" id="postfinancecheckout_payment.api_client" />
+            <argument type="service" id="cache" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.provider.language" class="PostFinanceCheckoutPayment\Components\Provider\Language">
+            <argument type="service" id="postfinancecheckout_payment.api_client" />
+            <argument type="service" id="cache" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.provider.currency" class="PostFinanceCheckoutPayment\Components\Provider\Currency">
+            <argument type="service" id="postfinancecheckout_payment.api_client" />
+            <argument type="service" id="cache" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.provider.label_descriptor" class="PostFinanceCheckoutPayment\Components\Provider\LabelDescriptor">
+            <argument type="service" id="postfinancecheckout_payment.api_client" />
+            <argument type="service" id="cache" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.provider.label_descriptor_group" class="PostFinanceCheckoutPayment\Components\Provider\LabelDescriptorGroup">
+            <argument type="service" id="postfinancecheckout_payment.api_client" />
+            <argument type="service" id="cache" />
+        </service>
+        
+        <!-- Services -->
+        
+        <service id="postfinancecheckout_payment.api_client" class="PostFinanceCheckoutPayment\Components\ApiClient">
+            <argument type="service" id="shopware.plugin.config_reader" />
+            <argument type="string">%postfinancecheckout_payment.base_gateway_url%</argument>
+        </service>
+        
+        <service id="postfinancecheckout_payment.translator" class="PostFinanceCheckoutPayment\Components\Translator">
+        		<argument type="service" id="models" />
+            <argument type="service" id="postfinancecheckout_payment.provider.language" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.manual_task" class="PostFinanceCheckoutPayment\Components\ManualTask">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="models" />
+            <argument type="service" id="shopware.plugin.config_reader" />
+            <argument type="service" id="cache" />
+            <argument type="service" id="postfinancecheckout_payment.api_client" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.delivery_indication" class="PostFinanceCheckoutPayment\Components\DeliveryIndication">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="models" />
+            <argument type="service" id="shopware.plugin.config_reader" />
+            <argument type="service" id="postfinancecheckout_payment.api_client" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.resource" class="PostFinanceCheckoutPayment\Components\Resource">
+        		<argument type="service" id="postfinancecheckout_payment.provider.language" />
+            <argument type="string">%postfinancecheckout_payment.base_gateway_url%</argument>
+        </service>
+        
+        <service id="postfinancecheckout_payment.transaction_info" class="PostFinanceCheckoutPayment\Components\TransactionInfo">
+	        	<argument type="service" id="service_container" />
+	        	<argument type="service" id="models" />
+	        	<argument type="service" id="shopware.plugin.config_reader" />
+	        	<argument type="service" id="postfinancecheckout_payment.api_client" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.transaction" class="PostFinanceCheckoutPayment\Components\Transaction">
+            <argument type="service" id="service_container" />
+	        	<argument type="service" id="models" />
+	        	<argument type="service" id="shopware.plugin.config_reader" />
+	        	<argument type="service" id="postfinancecheckout_payment.api_client" />
+	        	<argument type="service" id="postfinancecheckout_payment.line_item" />
+	        	<argument type="service" id="postfinancecheckout_payment.payment_method_configuration" />
+	        	<argument type="service" id="postfinancecheckout_payment.transaction_info" />
+	        	<argument type="service" id="postfinancecheckout_payment.session" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.registry" class="PostFinanceCheckoutPayment\Components\Registry">
+            <argument type="service" id="service_container" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.session" class="PostFinanceCheckoutPayment\Components\Session">
+            <argument type="service" id="service_container" />
+        		<argument type="service" id="models" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.basket" class="PostFinanceCheckoutPayment\Components\Basket">
+            <argument type="service" id="service_container" />
+	        	<argument type="service" id="dbal_connection" />
+	        	<argument type="service" id="postfinancecheckout_payment.session" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.refund" class="PostFinanceCheckoutPayment\Components\Refund">
+            <argument type="service" id="service_container" />
+	        	<argument type="service" id="models" />
+	        	<argument type="service" id="postfinancecheckout_payment.api_client" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.invoice" class="PostFinanceCheckoutPayment\Components\Invoice">
+            <argument type="service" id="service_container" />
+	        	<argument type="service" id="models" />
+	        	<argument type="service" id="postfinancecheckout_payment.api_client" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.webhook" class="PostFinanceCheckoutPayment\Components\Webhook">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="models" />
+            <argument type="service" id="shopware.plugin.config_reader" />
+        		<argument type="service" id="postfinancecheckout_payment.api_client" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.line_item" class="PostFinanceCheckoutPayment\Components\LineItem">
+            <argument type="service" id="service_container" />
+	        	<argument type="service" id="models" />
+	        	<argument type="service" id="postfinancecheckout_payment.provider.currency" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.payment_method_configuration" class="PostFinanceCheckoutPayment\Components\PaymentMethodConfiguration">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="shopware.plugin.config_reader" />
+            <argument type="service" id="models" />
+            <argument type="service" id="shopware.plugin_payment_installer" />
+            <argument type="service" id="postfinancecheckout_payment.api_client" />
+            <argument type="service" id="postfinancecheckout_payment.provider.payment_method" />
+            <argument type="service" id="postfinancecheckout_payment.translator" />
+            <argument type="service" id="postfinancecheckout_payment.resource" />
+        </service>
+        
+         <service id="postfinancecheckout_payment.payment" class="PostFinanceCheckoutPayment\Components\Payment">
+            <argument type="service" id="service_container" />
+	        	<argument type="service" id="postfinancecheckout_payment.transaction" />
+	        	<argument type="service" id="postfinancecheckout_payment.invoice" />
+	        	<argument type="service" id="postfinancecheckout_payment.subscriber.webhook.transaction" />
+	        	<argument type="service" id="postfinancecheckout_payment.subscriber.webhook.transaction_invoice" />
+        </service>
+        
+        <!-- Subscribers -->
+        
+        <service id="postfinancecheckout_payment.subscriber.order" class="PostFinanceCheckoutPayment\Subscriber\Order">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="shopware.plugin.config_reader" />
+	        	<argument type="service" id="models" />
+	        	<argument type="service" id="postfinancecheckout_payment.transaction" />
+	        	<argument type="service" id="postfinancecheckout_payment.transaction_info" />
+	        	<argument type="service" id="postfinancecheckout_payment.session" />
+	        	<argument type="service" id="postfinancecheckout_payment.registry" />
+            <tag name="shopware.event_subscriber" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.subscriber.account" class="PostFinanceCheckoutPayment\Subscriber\Account">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="shopware.plugin.config_reader" />
+	        	<argument type="service" id="models" />
+	        	<argument type="service" id="postfinancecheckout_payment.transaction_info" />
+            <tag name="shopware.event_subscriber" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.subscriber.checkout" class="PostFinanceCheckoutPayment\Subscriber\Checkout">
+            <argument type="service" id="service_container" />
+	        	<argument type="service" id="models" />
+	        	<argument type="service" id="postfinancecheckout_payment.transaction" />
+	        	<argument type="service" id="postfinancecheckout_payment.session" />
+            <tag name="shopware.event_subscriber" />
+        </service>
+        
+       	<service id="postfinancecheckout_payment.subscriber.payment_method_configuration" class="PostFinanceCheckoutPayment\Subscriber\PaymentMethodConfiguration">
+            <argument type="service" id="postfinancecheckout_payment.payment_method_configuration" />
+            <tag name="shopware.event_subscriber" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.subscriber.webhook" class="PostFinanceCheckoutPayment\Subscriber\Webhook">
+            <argument type="service" id="postfinancecheckout_payment.webhook" />
+            <tag name="shopware.event_subscriber" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.subscriber.risk_management" class="PostFinanceCheckoutPayment\Subscriber\RiskManagement">
+	        	<argument type="service" id="service_container" />
+	        	<argument type="service" id="models" />
+	        	<argument type="service" id="shopware.plugin.config_reader" />
+	        	<argument type="service" id="postfinancecheckout_payment.transaction" />
+	        	<argument type="service" id="postfinancecheckout_payment.session" />
+	        	<argument type="service" id="postfinancecheckout_payment.registry" />
+	        	<argument type="service" id="corelogger" />
+	        	<tag name="shopware.event_subscriber" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.subscriber.backend" class="PostFinanceCheckoutPayment\Subscriber\Backend">
+	        	<argument type="service" id="service_container" />
+	        	<argument type="service" id="models" />
+	        	<tag name="shopware.event_subscriber" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.subscriber.theme" class="PostFinanceCheckoutPayment\Subscriber\Theme">
+			<argument type="service" id="service_container" />
+            <tag name="shopware.event_subscriber" />
+        </service>
+        
+        <!-- Webhook Subscribers -->
+        
+        <service id="postfinancecheckout_payment.subscriber.webhook.transaction" class="PostFinanceCheckoutPayment\Subscriber\Webhook\Transaction">
+	        	<argument type="service" id="service_container" />
+	        	<argument type="service" id="shopware.plugin.config_reader" />
+            <argument type="service" id="models" />
+            <argument type="service" id="postfinancecheckout_payment.transaction" />
+            <argument type="service" id="postfinancecheckout_payment.transaction_info" />
+            <argument type="service" id="postfinancecheckout_payment.registry" />
+            <argument type="service" id="corelogger"/>
+            <tag name="shopware.event_subscriber" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.subscriber.webhook.transaction_invoice" class="PostFinanceCheckoutPayment\Subscriber\Webhook\TransactionInvoice">
+            <argument type="service" id="models" />
+            <argument type="service" id="postfinancecheckout_payment.api_client" />
+            <tag name="shopware.event_subscriber" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.subscriber.webhook.delivery_indication" class="PostFinanceCheckoutPayment\Subscriber\Webhook\DeliveryIndication">
+            <argument type="service" id="models" />
+            <argument type="service" id="postfinancecheckout_payment.api_client" />
+            <tag name="shopware.event_subscriber" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.subscriber.webhook.payment_method_configuration" class="PostFinanceCheckoutPayment\Subscriber\Webhook\PaymentMethodConfiguration">
+            <argument type="service" id="postfinancecheckout_payment.payment_method_configuration" />
+            <tag name="shopware.event_subscriber" />
+        </service>
+        
+        <service id="postfinancecheckout_payment.subscriber.webhook.manual_task" class="PostFinanceCheckoutPayment\Subscriber\Webhook\ManualTask">
+            <argument type="service" id="postfinancecheckout_payment.manual_task" />
+            <tag name="shopware.event_subscriber" />
+        </service>
+        
+        <!-- Commands -->
+        
+        <service id="postfinancecheckout_payment.commands.transaction_update" class="PostFinanceCheckoutPayment\Commands\UpdateTransactionCommand">
+			<tag name="console.command"/>
+		</service>
+    </services>
+</container>
