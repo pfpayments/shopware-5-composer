@@ -1,13 +1,13 @@
 {
-    "name": "wallee/shopware",
-    "description": "wallee integration for Shopware",
+    "name": "postfinancecheckout/shopware",
+    "description": "PostFinance Checkout integration for Shopware",
     "keywords": [
-		"wallee",
+		"PostFinance Checkout",
 		"payment",
 		"php",
 		"shopware"
 	],
-	"homepage": "https://www.wallee.com/",
+	"homepage": "https://www.postfinance.ch/",
     "license": "Apache-2.0",
     "authors": [
 		{
@@ -16,7 +16,7 @@
 		}
 	],
 	"type": "shopware-plugin",
-	"version" : "1.0.34",
+	"version" : "1.0.35",
     "require": {
         "postfinancecheckout/sdk": "1.1.12"
     },
