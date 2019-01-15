@@ -16,9 +16,9 @@
 		}
 	],
 	"type": "shopware-plugin",
-	"version" : "1.0.39",
+	"version" : "1.0.40",
     "require": {
-        "postfinancecheckout/sdk": "1.1.12"
+        "postfinancecheckout/sdk": "1.1.14"
     },
     "extra": {
         "installer-name": "PostFinanceCheckoutPayment"
