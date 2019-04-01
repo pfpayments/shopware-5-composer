@@ -571,11 +571,11 @@ class Transaction extends AbstractService
             $transaction->setSuccessUrl($this->getUrl('PostFinanceCheckoutPaymentTransaction', 'success', null, null, [
                 'spaceId' => $pluginConfig['spaceId'],
                 'transactionId' => $transaction->getId()
-            ]));
+            ]) . '?utm_nooverride=1');
             $transaction->setFailedUrl($this->getUrl('PostFinanceCheckoutPaymentTransaction', 'failure', null, null, [
                 'spaceId' => $pluginConfig['spaceId'],
                 'transactionId' => $transaction->getId()
-            ]));
+            ]) . '?utm_nooverride=1');
         }
     }
 

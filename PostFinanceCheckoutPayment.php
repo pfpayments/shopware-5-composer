@@ -60,7 +60,7 @@ class PostFinanceCheckoutPayment extends Plugin
 
     public function build(ContainerBuilder $container)
     {
-        $container->setParameter($this->getContainerPrefix() . '.base_gateway_url', 'https://www.postfinance-checkout.ch/');
+        $container->setParameter('postfinancecheckout_payment.base_gateway_url', 'https://www.postfinance-checkout.ch/');
 
         parent::build($container);
     }
