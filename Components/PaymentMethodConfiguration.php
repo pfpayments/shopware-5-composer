@@ -189,7 +189,7 @@ class PaymentMethodConfiguration
             ->getActiveDefault()
             ->getLocale()
             ->getLocale();
-        $pluginName = $this->container->getParameter('postfinancecheckout_payment.plugin_name');
+        $pluginName = $this->container->getParameter('post_finance_checkout_payment.plugin_name');
 
         $configurations = $this->modelManager->getRepository(PaymentMethodConfigurationModel::class)->findAll();
         foreach ($configurations as $configuration) {

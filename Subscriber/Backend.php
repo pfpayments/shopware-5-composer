@@ -56,16 +56,16 @@ class Backend implements SubscriberInterface
 
     public function onPostDispatchBackendIndex(\Enlight_Event_EventArgs $args)
     {
-        $args->getSubject()->View()->extendsTemplate('backend/postfinancecheckout_payment_index/index.tpl');
+        $args->getSubject()->View()->extendsTemplate('backend/post_finance_checkout_payment_index/index.tpl');
 
         $args->getSubject()
             ->get('template')
-            ->addTemplateDir($this->container->getParameter('postfinancecheckout_payment.plugin_dir') . '/Resources/views/');
+            ->addTemplateDir($this->container->getParameter('post_finance_checkout_payment.plugin_dir') . '/Resources/views/');
 
         if ($args->getRequest()->getActionName() === 'index') {
             $args->getSubject()
                 ->View()
-                ->extendsTemplate('backend/postfinancecheckout_payment_manual_tasks/app.js');
+                ->extendsTemplate('backend/post_finance_checkout_payment_manual_tasks/app.js');
         }
     }
 
@@ -73,10 +73,10 @@ class Backend implements SubscriberInterface
     {
         $args->getSubject()
             ->get('template')
-            ->addTemplateDir($this->container->getParameter('postfinancecheckout_payment.plugin_dir') . '/Resources/views/');
+            ->addTemplateDir($this->container->getParameter('post_finance_checkout_payment.plugin_dir') . '/Resources/views/');
         $args->getSubject()
             ->get('snippets')
-            ->addConfigDir($this->container->getParameter('postfinancecheckout_payment.plugin_dir') . '/Resources/snippets/');
+            ->addConfigDir($this->container->getParameter('post_finance_checkout_payment.plugin_dir') . '/Resources/snippets/');
     }
 
     public function onPostDispatchBackendOrder(\Enlight_Event_EventArgs $args)
@@ -85,20 +85,20 @@ class Backend implements SubscriberInterface
             case 'index':
                 $args->getSubject()
                     ->View()
-                    ->extendsTemplate('backend/postfinancecheckout_payment_order/app.js');
+                    ->extendsTemplate('backend/post_finance_checkout_payment_order/app.js');
                 break;
             case 'load':
                 $args->getSubject()
                     ->View()
-                    ->extendsTemplate('backend/postfinancecheckout_payment_order/view/window.js');
+                    ->extendsTemplate('backend/post_finance_checkout_payment_order/view/window.js');
                 $args->getSubject()
                     ->View()
-                    ->extendsTemplate('backend/postfinancecheckout_payment_order/model/order.js');
+                    ->extendsTemplate('backend/post_finance_checkout_payment_order/model/order.js');
                 break;
             case 'getList':
                 /* @var Plugin $plugin */
                 $plugin = $this->modelManager->getRepository(Plugin::class)->findOneBy([
-                    'name' => $this->container->getParameter('postfinancecheckout_payment.plugin_name')
+                    'name' => $this->container->getParameter('post_finance_checkout_payment.plugin_name')
                 ]);
                 $result = $args->getSubject()
                     ->View()

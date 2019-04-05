@@ -35,7 +35,7 @@ class Shopware_Controllers_Backend_PostFinanceCheckoutPaymentManualTasksWidget e
      */
     private function getManualTasksUrl($spaceId)
     {
-        $manualTaskUrl = $this->container->getParameter('postfinancecheckout_payment.base_gateway_url');
+        $manualTaskUrl = $this->container->getParameter('post_finance_checkout_payment.base_gateway_url');
         if ($spaceId != null) {
             $manualTaskUrl .= '/s/' . $spaceId . '/manual-task/list';
         }

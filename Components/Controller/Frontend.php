@@ -16,8 +16,8 @@ abstract class Frontend extends \Enlight_Controller_Action
 {
     public function preDispatch()
     {
-        $this->get('template')->addTemplateDir($this->container->getParameter('postfinancecheckout_payment.plugin_dir') . '/Resources/views/');
-        $this->get('snippets')->addConfigDir($this->container->getParameter('postfinancecheckout_payment.plugin_dir') . '/Resources/snippets/');
+        $this->get('template')->addTemplateDir($this->container->getParameter('post_finance_checkout_payment.plugin_dir') . '/Resources/views/');
+        $this->get('snippets')->addConfigDir($this->container->getParameter('post_finance_checkout_payment.plugin_dir') . '/Resources/snippets/');
 
         parent::preDispatch();
     }

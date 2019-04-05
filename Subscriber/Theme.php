@@ -44,10 +44,10 @@ class Theme implements SubscriberInterface
 
     public function onCollectJavascriptFiles()
     {
-        $frontendViewDirectory = $this->container->getParameter('postfinancecheckout_payment.plugin_dir') . '/Resources/views/frontend/';
+        $frontendViewDirectory = $this->container->getParameter('post_finance_checkout_payment.plugin_dir') . '/Resources/views/frontend/';
         
         return new ArrayCollection([
-            $frontendViewDirectory . 'checkout/postfinancecheckout_payment/_resources/checkout.js'
+            $frontendViewDirectory . 'checkout/post_finance_checkout_payment/_resources/checkout.js'
         ]);
     }
 }

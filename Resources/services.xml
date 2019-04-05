@@ -50,7 +50,7 @@
         
         <service id="postfinancecheckout_payment.api_client" class="PostFinanceCheckoutPayment\Components\ApiClient">
             <argument type="service" id="shopware.plugin.config_reader" />
-            <argument type="string">%postfinancecheckout_payment.base_gateway_url%</argument>
+            <argument type="string">%post_finance_checkout_payment.base_gateway_url%</argument>
         </service>
         
         <service id="postfinancecheckout_payment.translator" class="PostFinanceCheckoutPayment\Components\Translator">
@@ -75,7 +75,7 @@
         
         <service id="postfinancecheckout_payment.resource" class="PostFinanceCheckoutPayment\Components\Resource">
         		<argument type="service" id="postfinancecheckout_payment.provider.language" />
-            <argument type="string">%postfinancecheckout_payment.base_gateway_url%</argument>
+            <argument type="string">%post_finance_checkout_payment.base_gateway_url%</argument>
         </service>
         
         <service id="postfinancecheckout_payment.transaction_info" class="PostFinanceCheckoutPayment\Components\TransactionInfo">

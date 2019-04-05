@@ -112,7 +112,7 @@ class Order implements SubscriberInterface
             $payment = $this->modelManager->find(Payment::class, $paymentId);
             /* @var Plugin $plugin */
             $plugin = $this->modelManager->getRepository(Plugin::class)->findOneBy([
-                'name' => $this->container->getParameter('postfinancecheckout_payment.plugin_name')
+                'name' => $this->container->getParameter('post_finance_checkout_payment.plugin_name')
             ]);
             if ($payment instanceof \Shopware\Models\Payment\Payment && $plugin->getId() == $payment->getPluginId()) {
                 $shop = $this->modelManager->getRepository(Shop::class)->find($params['subshopID']);
@@ -133,7 +133,7 @@ class Order implements SubscriberInterface
         if ($order instanceof OrderModel) {
             /* @var Plugin $plugin */
             $plugin = $this->modelManager->getRepository(Plugin::class)->findOneBy([
-                'name' => $this->container->getParameter('postfinancecheckout_payment.plugin_name')
+                'name' => $this->container->getParameter('post_finance_checkout_payment.plugin_name')
             ]);
             if ($order->getPayment() instanceof \Shopware\Models\Payment\Payment && $plugin->getId() == $order->getPayment()->getPluginId()) {
                 //$order->setOrderStatus($this->getStatus($this->getPendingOrderStatusId($order)));
@@ -166,7 +166,7 @@ class Order implements SubscriberInterface
         if ($order instanceof OrderModel) {
             /* @var Plugin $plugin */
             $plugin = $this->modelManager->getRepository(Plugin::class)->findOneBy([
-                'name' => $this->container->getParameter('postfinancecheckout_payment.plugin_name')
+                'name' => $this->container->getParameter('post_finance_checkout_payment.plugin_name')
             ]);
             if ($order->getPayment() instanceof \Shopware\Models\Payment\Payment && $plugin->getId() == $order->getPayment()->getPluginId()) {
                 /* @var OrderTransactionMapping $orderTransactionMapping */
@@ -201,7 +201,7 @@ class Order implements SubscriberInterface
         if ($order instanceof OrderModel) {
             /* @var Plugin $plugin */
             $plugin = $this->modelManager->getRepository(Plugin::class)->findOneBy([
-                'name' => $this->container->getParameter('postfinancecheckout_payment.plugin_name')
+                'name' => $this->container->getParameter('post_finance_checkout_payment.plugin_name')
             ]);
             if ($order->getPayment() instanceof \Shopware\Models\Payment\Payment && $plugin->getId() == $order->getPayment()->getPluginId()) {
                 $orderEmailData = $this->modelManager->getRepository(OrderTransactionMapping::class)->createNamedQuery('getOrderEmailSent')->setParameter('orderId', $order->getId())->getResult();

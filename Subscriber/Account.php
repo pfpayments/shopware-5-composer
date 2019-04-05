@@ -90,8 +90,8 @@ class Account implements SubscriberInterface
         }
 
         $view->assign('sOpenOrders', $orderData);
-        $view->addTemplateDir($this->container->getParameter('postfinancecheckout_payment.plugin_dir') . '/Resources/views/');
-        $view->extendsTemplate('frontend/account/postfinancecheckout_payment/order.tpl');
+        $view->addTemplateDir($this->container->getParameter('post_finance_checkout_payment.plugin_dir') . '/Resources/views/');
+        $view->extendsTemplate('frontend/account/post_finance_checkout_payment/order.tpl');
     }
 
     /**

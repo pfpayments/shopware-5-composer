@@ -125,7 +125,7 @@ class RiskManagement implements SubscriberInterface
                     
                     /* @var Plugin $plugin */
                     $plugin = $this->modelManager->getRepository(Plugin::class)->findOneBy([
-                        'name' => $this->container->getParameter('postfinancecheckout_payment.plugin_name')
+                        'name' => $this->container->getParameter('post_finance_checkout_payment.plugin_name')
                     ]);
             $pluginConfig = $this->configReader->getByPluginName('PostFinanceCheckoutPayment', $this->container->get('shop'));
             $spaceId = $pluginConfig['spaceId'];
@@ -163,7 +163,7 @@ class RiskManagement implements SubscriberInterface
             $payment = $this->modelManager->find(Payment::class, $paymentId);
             /* @var Plugin $plugin */
             $plugin = $this->modelManager->getRepository(Plugin::class)->findOneBy([
-                'name' => $this->container->getParameter('postfinancecheckout_payment.plugin_name')
+                'name' => $this->container->getParameter('post_finance_checkout_payment.plugin_name')
             ]);
             if ($payment instanceof \Shopware\Models\Payment\Payment && $plugin->getId() == $payment->getPluginId()) {
                 $available = $this->isPaymentMethodAvailable($payment);

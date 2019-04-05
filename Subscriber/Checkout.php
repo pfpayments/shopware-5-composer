@@ -103,15 +103,15 @@ class Checkout implements SubscriberInterface
             $payment = $this->modelManager->getRepository(Payment::class)->find($paymentData['id']);
             /* @var Plugin $plugin */
             $plugin = $this->modelManager->getRepository(Plugin::class)->findOneBy([
-                'name' => $this->container->getParameter('postfinancecheckout_payment.plugin_name')
+                'name' => $this->container->getParameter('post_finance_checkout_payment.plugin_name')
             ]);
             if ($payment instanceof \Shopware\Models\Payment\Payment && $plugin->getId() == $payment->getPluginId()) {
                 $paymentMethodConfiguration = $this->modelManager->getRepository(PaymentMethodConfigurationModel::class)->findOneBy([
                     'paymentId' => $payment->getId()
                 ]);
                 if ($paymentMethodConfiguration instanceof PaymentMethodConfigurationModel) {
-                    $view->addTemplateDir($this->container->getParameter('postfinancecheckout_payment.plugin_dir') . '/Resources/views/');
-                    $view->extendsTemplate('frontend/checkout/postfinancecheckout_payment/confirm.tpl');
+                    $view->addTemplateDir($this->container->getParameter('post_finance_checkout_payment.plugin_dir') . '/Resources/views/');
+                    $view->extendsTemplate('frontend/checkout/post_finance_checkout_payment/confirm.tpl');
 
                     $view->assign('postFinanceCheckoutPaymentJavascriptUrl', $this->transactionService->getJavaScriptUrl());
                     $view->assign('postFinanceCheckoutPaymentPageUrl', $this->transactionService->getPaymentPageUrl());

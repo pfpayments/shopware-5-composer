@@ -203,7 +203,7 @@ class TransactionInfo extends AbstractArrayBuilder
      */
     private function getTransactionUrl()
     {
-        return $this->container->getParameter('postfinancecheckout_payment.base_gateway_url') . '/s/' . $this->transactionInfo->getSpaceId() . '/payment/transaction/view/' . $this->transactionInfo->getTransactionId();
+        return $this->container->getParameter('post_finance_checkout_payment.base_gateway_url') . '/s/' . $this->transactionInfo->getSpaceId() . '/payment/transaction/view/' . $this->transactionInfo->getTransactionId();
     }
 
     /**
