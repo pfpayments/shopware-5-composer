@@ -17,6 +17,6 @@ class Shopware_Controllers_Frontend_PostFinanceCheckoutPaymentPay extends Fronte
     public function indexAction()
     {
         $namespace = $this->container->get('snippets')->getNamespace('frontend/postfinancecheckout_payment/main');
-        return $this->forward('confirm', 'checkout', null, ['postFinanceCheckoutErrors' => $namespace->get('checkout/javascript_error', 'The order could not be submitted because it was not correctly transmitted to PostFinance Checkout.')]);
+        return $this->forward('confirm', 'checkout', null, ['postFinanceCheckoutErrors' => $namespace->get('checkout/javascript_error', 'The payment information could not be sent to PostFinance Checkout. Either certain Javascript files were not included or a Javascript error occurred.')]);
     }
 }
