@@ -150,6 +150,11 @@ class Checkout implements SubscriberInterface
     {
         /* @var \Enlight_Components_Session_Namespace $session */
         $session = $this->container->get('session');
+        if (isset($session['postfinancecheckout_payment.transaction_timeout']) && !empty($session['postfinancecheckout_payment.transaction_timeout'])) {
+            $session['postfinancecheckout_payment.transaction_timeout'] = '';
+            $namespace = $this->container->get('snippets')->getNamespace('frontend/postfinancecheckout_payment/main');
+            return $namespace->get('checkout/transaction_timeout', 'The payment timed out. Please try again.');
+        }
         if (isset($session['postfinancecheckout_payment.failed_transaction']) && !empty($session['postfinancecheckout_payment.failed_transaction'])) {
             /* @var TransactionInfo $transactionInfo */
             $transactionInfo = $this->modelManager

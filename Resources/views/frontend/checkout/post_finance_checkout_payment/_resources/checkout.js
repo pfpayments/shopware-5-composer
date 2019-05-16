@@ -77,7 +77,7 @@ ShopwarePostFinanceCheckout.Checkout = {
                     }, this), $.proxy(function(){
                     	this.unblockCheckoutButton();
                         this.blockSubmit = false;
-                    }, this));
+                    }, this), container);
                 } else {
                     $(window).scrollTop($('#' + container).offset().top);
             		if (validationResult.errors) {
@@ -92,7 +92,7 @@ ShopwarePostFinanceCheckout.Checkout = {
         }
     },
     
-    createOrder: function(onSuccess, onError){
+    createOrder: function(onSuccess, onError, container){
     	$.ajax({
             url: this.saveOrderUrl,
             data: $('#confirm--form').serializeArray(),
