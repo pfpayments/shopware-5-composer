@@ -3,7 +3,7 @@
 /**
  * PostFinance Checkout Shopware
  *
- * This Shopware extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/).
+ * This Shopware extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/checkout/).
  *
  * @package PostFinanceCheckout_Payment
  * @author customweb GmbH (http://www.customweb.com/)
@@ -153,6 +153,7 @@ class TransactionInfo extends AbstractArrayBuilder
             'failureReason' => $this->translate($this->transactionInfo->getFailureReason()),
             'labels' => LabelGroupArrayBuilder::buildGrouped($this->container, $this->getLabelBuilders()),
             'transactionUrl' => $this->getTransactionUrl(),
+            'customerUrl' => $this->getCustomerUrl(),
             'lineItems' => $this->getLineItems(),
             'lineItemTotalAmount' => $this->lineItemVersion != null ? $this->lineItemVersion->getAmount() : $this->transactionInfo->getAuthorizationAmount(),
             'refundBaseLineItems' => RefundArrayBuilder::buildBaseLineItems($this->container, $this->invoice, $this->refunds),
@@ -204,6 +205,15 @@ class TransactionInfo extends AbstractArrayBuilder
     private function getTransactionUrl()
     {
         return $this->container->getParameter('post_finance_checkout_payment.base_gateway_url') . '/s/' . $this->transactionInfo->getSpaceId() . '/payment/transaction/view/' . $this->transactionInfo->getTransactionId();
+    }
+    
+    /**
+     *
+     * @return string
+     */
+    private function getCustomerUrl()
+    {
+        return $this->container->getParameter('post_finance_checkout_payment.base_gateway_url') . '/s/' . $this->transactionInfo->getSpaceId() . '/payment/customer/transaction/view/' . $this->transactionInfo->getTransactionId();
     }
 
     /**

@@ -3,7 +3,7 @@
 /**
  * PostFinance Checkout Shopware
  *
- * This Shopware extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/).
+ * This Shopware extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/checkout/).
  *
  * @package PostFinanceCheckout_Payment
  * @author customweb GmbH (http://www.customweb.com/)
@@ -24,14 +24,10 @@ use PostFinanceCheckoutPayment\Models\TransactionInfo;
 use Shopware\Models\Widget\Widget;
 use Shopware\Components\Plugin\Context\ActivateContext;
 
+require_once dirname(__FILE__) . '/vendor/autoload.php';
+
 class PostFinanceCheckoutPayment extends Plugin
 {
-    public static function getSubscribedEvents()
-    {
-        return [
-            'Enlight_Controller_Front_StartDispatch' => 'onStartDispatch'
-        ];
-    }
 
     public function install(InstallContext $context)
     {
@@ -65,13 +61,6 @@ class PostFinanceCheckoutPayment extends Plugin
         parent::build($container);
     }
 
-    public function onStartDispatch()
-    {
-        if (file_exists($this->getPath() . '/vendor/autoload.php')) {
-            require_once $this->getPath() . '/vendor/autoload.php';
-        }
-    }
-    
     private function getModelClasses()
     {
         return [

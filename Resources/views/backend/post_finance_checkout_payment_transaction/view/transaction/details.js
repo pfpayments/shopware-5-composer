@@ -1,7 +1,7 @@
 /**
  * PostFinance Checkout Shopware
  *
- * This Shopware extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/).
+ * This Shopware extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/checkout/).
  *
  * @package PostFinanceCheckout_Payment
  * @author customweb GmbH (http://www.customweb.com/)
@@ -30,6 +30,7 @@ Ext.define('Shopware.apps.PostFinanceCheckoutPaymentTransaction.view.transaction
             currency: '{s name=transaction/field/currency}Currency{/s}',
             amount: '{s name=transaction/field/authorization_amount}Authorization Amount{/s}',
             transaction: '{s name=transaction/field/transaction}Transaction{/s}',
+            customer: '{s name=transaction/field/customer}Customer{/s}',
             invoice: '{s name=transaction/field/invoice}Invoice{/s}',
             packingSlip: '{s name=transaction/field/packing_slip}Packing Slip{/s}'
         },
@@ -53,6 +54,7 @@ Ext.define('Shopware.apps.PostFinanceCheckoutPaymentTransaction.view.transaction
             deny: '{s name=transaction/button/delivery_indication_deny}Deny{/s}',
             accept: '{s name=transaction/button/delivery_indication_accept}Accept{/s}',
             transaction: '{s name=transaction/button/transaction_link}View in PostFinance Checkout{/s}',
+            customer: '{s name=transaction/button/customer_link}View in PostFinance Checkout{/s}',
             update: '{s name=transaction/button/update}Update{/s}',
         }
     },
@@ -139,6 +141,14 @@ Ext.define('Shopware.apps.PostFinanceCheckoutPaymentTransaction.view.transaction
             items: {
                 xtype: 'container',
                 html: '<a href="' + me.record.get('transactionUrl') + '" target="_blank">' + me.snippets.button.transaction + '</a>'
+            }
+        });
+        fields.push({
+            xtype: 'fieldcontainer',
+            fieldLabel: me.snippets.field.customer,
+            items: {
+                xtype: 'container',
+                html: '<a href="' + me.record.get('customerUrl') + '" target="_blank">' + me.snippets.button.customer + '</a>'
             }
         });
         
