@@ -205,8 +205,7 @@ class Transaction extends AbstractService
     {
         $baseUrl = $this->container->getParameter('post_finance_checkout_payment.base_gateway_url');
 
-        /* @var Shop $shop */
-        $pluginConfig = $this->configReader->getByPluginName('PostFinanceCheckoutPayment', $shop);
+        $pluginConfig = $this->configReader->getByPluginName('PostFinanceCheckoutPayment', $this->container->get('shop'));
         $spaceId = $pluginConfig['spaceId'];
 
         $deviceId = Shopware()->Front()
