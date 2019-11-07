@@ -60,16 +60,6 @@ class DeliveryIndication extends AbstractOrderRelatedSubscriber
     /**
      *
      * @param \PostFinanceCheckout\Sdk\Model\DeliveryIndication $deliveryIndication
-     * @return string
-     */
-    protected function getOrderNumber($deliveryIndication)
-    {
-        return $deliveryIndication->getTransaction()->getMerchantReference();
-    }
-
-    /**
-     *
-     * @param \PostFinanceCheckout\Sdk\Model\DeliveryIndication $deliveryIndication
      * @return int
      */
     protected function getTransactionId($deliveryIndication)
