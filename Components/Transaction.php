@@ -627,13 +627,13 @@ class Transaction extends AbstractService
             $transaction->setShippingMethod($this->fixLength($order->getDispatch()
                 ->getName(), 200));
         }
-
+        
         $pluginConfig = $this->configReader->getByPluginName('PostFinanceCheckoutPayment', $order->getShop());
-        $spaceViewId = $pluginConfig['spaceViewId'];
 
         if ($transaction instanceof \PostFinanceCheckout\Sdk\Model\TransactionCreate) {
-            $transaction->setSpaceViewId($spaceViewId);
+            $transaction->setSpaceViewId($pluginConfig['spaceViewId']);
             $transaction->setAutoConfirmationEnabled(false);
+            $transaction->setChargeRetryEnabled(false);
         }
 
         $transaction->setLineItems($this->lineItem->collectLineItems($order));
@@ -679,12 +679,13 @@ class Transaction extends AbstractService
         }
         $transaction->setLanguage($shop->getLocale()
             ->getLocale());
-
+        
         $pluginConfig = $this->configReader->getByPluginName('PostFinanceCheckoutPayment', $shop);
-        $spaceViewId = $pluginConfig['spaceViewId'];
 
         if ($transaction instanceof \PostFinanceCheckout\Sdk\Model\TransactionCreate) {
-            $transaction->setSpaceViewId($spaceViewId);
+            $transaction->setSpaceViewId($pluginConfig['spaceViewId']);
+            $transaction->setAutoConfirmationEnabled(false);
+            $transaction->setChargeRetryEnabled(false);
         }
 
         $transaction->setLineItems($this->lineItem->collectBasketLineItems());
