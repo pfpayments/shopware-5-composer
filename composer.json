@@ -1,26 +1,25 @@
 {
-    "name": "postfinancecheckout/shopware",
-    "description": "PostFinance Checkout integration for Shopware",
-    "keywords": [
+	"name" : "postfinancecheckout/shopware-5",
+	"description" : "PostFinance Checkout integration for Shopware 5",
+	"keywords" : [
 		"PostFinance Checkout",
 		"payment",
 		"php",
 		"shopware"
 	],
-	"homepage": "https://www.postfinance.ch/checkout/",
-    "license": "Apache-2.0",
-    "authors": [
-		{
-			"name": "customweb GmbH",
-			"homepage": "https://customweb.com"
+	"homepage" : "https://www.postfinance.ch/checkout/",
+	"license" : "Apache-2.0",
+	"authors" : [{
+			"name" : "customweb GmbH",
+			"homepage" : "https://customweb.com"
 		}
 	],
-	"type": "shopware-plugin",
-	"version" : "1.0.59",
-    "require": {
-        "postfinancecheckout/sdk": "2.0.11"
-    },
-    "extra": {
-        "installer-name": "PostFinanceCheckoutPayment"
-    }
+	"type" : "shopware-plugin",
+	"version" : "1.0.61",
+	"require" : {
+		"postfinancecheckout/sdk" : "2.0.11"
+	},
+	"extra" : {
+		"installer-name" : "PostFinanceCheckoutPayment"
+	}
 }

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * PostFinance Checkout Shopware
+ * PostFinance Checkout Shopware 5
  *
- * This Shopware extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/checkout/).
+ * This Shopware 5 extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/checkout/).
  *
  * @package PostFinanceCheckout_Payment
  * @author customweb GmbH (http://www.customweb.com/)
@@ -188,7 +188,7 @@ class Webhook extends AbstractService
         $webhookUrl = new \PostFinanceCheckout\Sdk\Model\WebhookUrlCreate();
         $webhookUrl->setUrl($this->getHandleUrl());
         $webhookUrl->setState(\PostFinanceCheckout\Sdk\Model\CreationEntityState::ACTIVE);
-        $webhookUrl->setName('Shopware');
+        $webhookUrl->setName('Shopware 5');
         return $this->webhookUrlService->create($spaceId, $webhookUrl);
     }
 

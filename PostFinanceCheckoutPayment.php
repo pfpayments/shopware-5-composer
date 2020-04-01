@@ -1,9 +1,9 @@
 <?php
 
 /**
- * PostFinance Checkout Shopware
+ * PostFinance Checkout Shopware 5
  *
- * This Shopware extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/checkout/).
+ * This Shopware 5 extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/checkout/).
  *
  * @package PostFinanceCheckout_Payment
  * @author customweb GmbH (http://www.customweb.com/)
@@ -58,7 +58,7 @@ class PostFinanceCheckoutPayment extends Plugin
 
     public function build(ContainerBuilder $container)
     {
-        $container->setParameter('post_finance_checkout_payment.base_gateway_url', 'https://www.postfinance-checkout.ch/');
+        $container->setParameter('post_finance_checkout_payment.base_gateway_url', 'https://checkout.postfinance.ch/');
 
         parent::build($container);
     }
