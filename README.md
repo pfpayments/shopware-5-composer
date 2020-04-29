@@ -10,8 +10,12 @@ This repository contains the Shopware 5 plugin that enables to process payments 
 
 ## Documentation
 
-* [Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/shopware-5-composer/1.0.61/docs/en/documentation.html)
+* [Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/shopware-5-composer/1.0.62/docs/en/documentation.html)
+
+## Support
+
+Support queries can be issued on the [PostFinance Checkout support site](https://www.postfinance.ch/en/business/support/written-contact/contact-form.html).
 
 ## License
 
-Please see the [license file](https://github.com/pfpayments/shopware-5-composer/blob/1.0.61/LICENSE) for more information.
+Please see the [license file](https://github.com/pfpayments/shopware-5-composer/blob/1.0.62/LICENSE) for more information.
