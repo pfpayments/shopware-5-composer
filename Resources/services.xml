@@ -74,26 +74,26 @@
         </service>
         
         <service id="postfinancecheckout_payment.resource" class="PostFinanceCheckoutPayment\Components\Resource">
-        		<argument type="service" id="postfinancecheckout_payment.provider.language" />
+       		<argument type="service" id="postfinancecheckout_payment.provider.language" />
             <argument type="string">%post_finance_checkout_payment.base_gateway_url%</argument>
         </service>
         
         <service id="postfinancecheckout_payment.transaction_info" class="PostFinanceCheckoutPayment\Components\TransactionInfo">
-	        	<argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="shopware.plugin.config_reader" />
-	        	<argument type="service" id="postfinancecheckout_payment.api_client" />
+        	<argument type="service" id="service_container" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="shopware.plugin.config_reader" />
+        	<argument type="service" id="postfinancecheckout_payment.api_client" />
         </service>
         
         <service id="postfinancecheckout_payment.transaction" class="PostFinanceCheckoutPayment\Components\Transaction">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="shopware.plugin.config_reader" />
-	        	<argument type="service" id="postfinancecheckout_payment.api_client" />
-	        	<argument type="service" id="postfinancecheckout_payment.line_item" />
-	        	<argument type="service" id="postfinancecheckout_payment.payment_method_configuration" />
-	        	<argument type="service" id="postfinancecheckout_payment.transaction_info" />
-	        	<argument type="service" id="postfinancecheckout_payment.session" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="shopware.plugin.config_reader" />
+        	<argument type="service" id="postfinancecheckout_payment.api_client" />
+        	<argument type="service" id="postfinancecheckout_payment.line_item" />
+        	<argument type="service" id="postfinancecheckout_payment.payment_method_configuration" />
+        	<argument type="service" id="postfinancecheckout_payment.transaction_info" />
+        	<argument type="service" id="postfinancecheckout_payment.session" />
         </service>
         
         <service id="postfinancecheckout_payment.registry" class="PostFinanceCheckoutPayment\Components\Registry">
@@ -102,38 +102,39 @@
         
         <service id="postfinancecheckout_payment.session" class="PostFinanceCheckoutPayment\Components\Session">
             <argument type="service" id="service_container" />
-        		<argument type="service" id="models" />
+       		<argument type="service" id="models" />
         </service>
         
         <service id="postfinancecheckout_payment.basket" class="PostFinanceCheckoutPayment\Components\Basket">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="dbal_connection" />
-	        	<argument type="service" id="postfinancecheckout_payment.session" />
+        	<argument type="service" id="dbal_connection" />
+        	<argument type="service" id="postfinancecheckout_payment.session" />
         </service>
         
         <service id="postfinancecheckout_payment.refund" class="PostFinanceCheckoutPayment\Components\Refund">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="postfinancecheckout_payment.api_client" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="postfinancecheckout_payment.api_client" />
         </service>
         
         <service id="postfinancecheckout_payment.invoice" class="PostFinanceCheckoutPayment\Components\Invoice">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="postfinancecheckout_payment.api_client" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="postfinancecheckout_payment.api_client" />
         </service>
         
         <service id="postfinancecheckout_payment.webhook" class="PostFinanceCheckoutPayment\Components\Webhook">
             <argument type="service" id="service_container" />
             <argument type="service" id="models" />
             <argument type="service" id="shopware.plugin.config_reader" />
-        		<argument type="service" id="postfinancecheckout_payment.api_client" />
+       		<argument type="service" id="postfinancecheckout_payment.api_client" />
         </service>
         
         <service id="postfinancecheckout_payment.line_item" class="PostFinanceCheckoutPayment\Components\LineItem">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="postfinancecheckout_payment.provider.currency" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="postfinancecheckout_payment.provider.currency" />
+        	<argument type="service" id="shopware.plugin.config_reader" />
         </service>
         
         <service id="postfinancecheckout_payment.payment_method_configuration" class="PostFinanceCheckoutPayment\Components\PaymentMethodConfiguration">
@@ -149,10 +150,10 @@
         
          <service id="postfinancecheckout_payment.payment" class="PostFinanceCheckoutPayment\Components\Payment">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="postfinancecheckout_payment.transaction" />
-	        	<argument type="service" id="postfinancecheckout_payment.invoice" />
-	        	<argument type="service" id="postfinancecheckout_payment.subscriber.webhook.transaction" />
-	        	<argument type="service" id="postfinancecheckout_payment.subscriber.webhook.transaction_invoice" />
+        	<argument type="service" id="postfinancecheckout_payment.transaction" />
+        	<argument type="service" id="postfinancecheckout_payment.invoice" />
+        	<argument type="service" id="postfinancecheckout_payment.subscriber.webhook.transaction" />
+        	<argument type="service" id="postfinancecheckout_payment.subscriber.webhook.transaction_invoice" />
         </service>
         
         <!-- Subscribers -->
@@ -160,27 +161,27 @@
         <service id="postfinancecheckout_payment.subscriber.order" class="PostFinanceCheckoutPayment\Subscriber\Order">
             <argument type="service" id="service_container" />
             <argument type="service" id="shopware.plugin.config_reader" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="postfinancecheckout_payment.transaction" />
-	        	<argument type="service" id="postfinancecheckout_payment.transaction_info" />
-	        	<argument type="service" id="postfinancecheckout_payment.session" />
-	        	<argument type="service" id="postfinancecheckout_payment.registry" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="postfinancecheckout_payment.transaction" />
+        	<argument type="service" id="postfinancecheckout_payment.transaction_info" />
+        	<argument type="service" id="postfinancecheckout_payment.session" />
+        	<argument type="service" id="postfinancecheckout_payment.registry" />
             <tag name="shopware.event_subscriber" />
         </service>
         
         <service id="postfinancecheckout_payment.subscriber.account" class="PostFinanceCheckoutPayment\Subscriber\Account">
             <argument type="service" id="service_container" />
             <argument type="service" id="shopware.plugin.config_reader" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="postfinancecheckout_payment.transaction_info" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="postfinancecheckout_payment.transaction_info" />
             <tag name="shopware.event_subscriber" />
         </service>
         
         <service id="postfinancecheckout_payment.subscriber.checkout" class="PostFinanceCheckoutPayment\Subscriber\Checkout">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="postfinancecheckout_payment.transaction" />
-	        	<argument type="service" id="postfinancecheckout_payment.session" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="postfinancecheckout_payment.transaction" />
+        	<argument type="service" id="postfinancecheckout_payment.session" />
             <tag name="shopware.event_subscriber" />
         </service>
         
@@ -195,20 +196,20 @@
         </service>
         
         <service id="postfinancecheckout_payment.subscriber.risk_management" class="PostFinanceCheckoutPayment\Subscriber\RiskManagement">
-	        	<argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="shopware.plugin.config_reader" />
-	        	<argument type="service" id="postfinancecheckout_payment.transaction" />
-	        	<argument type="service" id="postfinancecheckout_payment.session" />
-	        	<argument type="service" id="postfinancecheckout_payment.registry" />
-	        	<argument type="service" id="corelogger" />
-	        	<tag name="shopware.event_subscriber" />
+        	<argument type="service" id="service_container" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="shopware.plugin.config_reader" />
+        	<argument type="service" id="postfinancecheckout_payment.transaction" />
+        	<argument type="service" id="postfinancecheckout_payment.session" />
+        	<argument type="service" id="postfinancecheckout_payment.registry" />
+        	<argument type="service" id="corelogger" />
+        	<tag name="shopware.event_subscriber" />
         </service>
         
         <service id="postfinancecheckout_payment.subscriber.backend" class="PostFinanceCheckoutPayment\Subscriber\Backend">
-	        	<argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<tag name="shopware.event_subscriber" />
+        	<argument type="service" id="service_container" />
+        	<argument type="service" id="models" />
+        	<tag name="shopware.event_subscriber" />
         </service>
         
         <service id="postfinancecheckout_payment.subscriber.theme" class="PostFinanceCheckoutPayment\Subscriber\Theme">
@@ -219,8 +220,8 @@
         <!-- Webhook Subscribers -->
         
         <service id="postfinancecheckout_payment.subscriber.webhook.transaction" class="PostFinanceCheckoutPayment\Subscriber\Webhook\Transaction">
-	        	<argument type="service" id="service_container" />
-	        	<argument type="service" id="shopware.plugin.config_reader" />
+        	<argument type="service" id="service_container" />
+        	<argument type="service" id="shopware.plugin.config_reader" />
             <argument type="service" id="models" />
             <argument type="service" id="postfinancecheckout_payment.transaction" />
             <argument type="service" id="postfinancecheckout_payment.transaction_info" />
