@@ -5,12 +5,12 @@ This repository contains the Shopware 5 plugin that enables to process payments 
 
 ## Requirements
 
-* [Shopware](https://shopware.com/) 5.2.17 or later
+* [Shopware](https://shopware.com/) 5.3 or later
 * [PHP](http://php.net/) 5.6.4 or later
 
 ## Documentation
 
-* [Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/shopware-5-composer/1.1.1/docs/en/documentation.html)
+* [Documentation](https://plugin-documentation.postfinance-checkout.ch/pfpayments/shopware-5-composer/1.1.2/docs/en/documentation.html)
 
 ## Support
 
@@ -18,4 +18,4 @@ Support queries can be issued on the [PostFinance Checkout support site](https:/
 
 ## License
 
-Please see the [license file](https://github.com/pfpayments/shopware-5-composer/blob/1.1.1/LICENSE) for more information.
+Please see the [license file](https://github.com/pfpayments/shopware-5-composer/blob/1.1.2/LICENSE) for more information.
