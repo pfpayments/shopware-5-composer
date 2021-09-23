@@ -41,7 +41,7 @@
 {block name='frontend_checkout_confirm_premiums'}
 	<div class="panel has--border" id="postfinancecheckout_payment_method_form_container" style="position: absolute; left: -10000px;">
 		<div class="panel--title is--underline">
-			{s name=checkout/payment_information namespace=frontend/postfinancecheckout_payment/main}Payment Information{/s}
+			{s name="checkout/payment_information namespace=frontend/postfinancecheckout_payment/main"}Payment Information{/s}
 		</div>
 		<div class="panel--body is--wide">
 			<div id="postfinancecheckout_payment_method_form"></div>
