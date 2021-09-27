@@ -11,27 +11,27 @@
 //{block name="backend/postfinancecheckout_payment_transaction/view/transaction/line_items"}
 //{namespace name=backend/postfinancecheckout_payment/main}
 Ext.define('Shopware.apps.PostFinanceCheckoutPaymentTransaction.view.transaction.LineItems', {
-    
+
     extend: 'Ext.panel.Panel',
-    
+
     alias: 'widget.postfinancecheckout-payment-transaction-line-items',
-    
+
     layout: 'fit',
-    
+
     autoScroll: true,
 
     border: false,
-    
+
     snippets: {
         field: {
-            taxes: '{s name=line_item/field/total_tax_amount}Taxes{/s}',
-            total: '{s name=line_item/field/total_amount}Total{/s}'
+            taxes: '{s name="line_item/field/total_tax_amount"}Taxes{/s}',
+            total: '{s name="line_item/field/total_amount"}Total{/s}'
         },
         button: {
-            update: '{s name=line_item/button/update}Update{/s}'
+            update: '{s name="line_item/button/update"}Update{/s}'
         }
     },
-    
+
     initComponent: function() {
         var me = this;
         me.registerEvents();

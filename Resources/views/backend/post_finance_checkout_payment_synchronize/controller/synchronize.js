@@ -13,13 +13,13 @@
 Ext.define('Shopware.apps.PostFinanceCheckoutPaymentSynchronize.controller.Synchronize', {
 
     extend: 'Enlight.app.Controller',
-    
+
     snippets: {
         infoMessages: {
-            success: '{s name=synchronize/messages/success}Synchronization successful{/s}',
-            noPermission: '{s name=synchronize/messages/no_permission}You do not have the permission to synchronize{/s}'
+            success: '{s name="synchronize/messages/success"}Synchronization successful{/s}',
+            noPermission: '{s name="synchronize/messages/no_permission"}You do not have the permission to synchronize{/s}'
         },
-        growlTitle: '{s name=growl_title}PostFinance Checkout Payment{/s}'
+        growlTitle: '{s name="growl_title"}PostFinance Checkout Payment{/s}'
     },
 
     directSynchronize: function() {

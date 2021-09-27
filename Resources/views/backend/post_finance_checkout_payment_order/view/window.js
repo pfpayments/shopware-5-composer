@@ -18,23 +18,23 @@
 //{$smarty.block.parent}
 //{namespace name=backend/postfinancecheckout_payment/main}
 Ext.define('Shopware.apps.Order.PluginPostFinanceCheckoutPayment.view.window.TransactionTab', {
-    
+
     /**
      * Return order transaction tab.
-     * 
+     *
      * @return Ext.container.Container
      */
     createOrderTransactionTab: function(parent) {
         var me = this,
             storeLoaded = false,
             tabTransactionStore = Ext.create('Shopware.apps.PostFinanceCheckoutPaymentTransaction.store.Transaction');
-        
+
         me.transactionDetails = Ext.create('Shopware.apps.PostFinanceCheckoutPaymentTransaction.view.transaction.Transaction', {
             region: 'center'
         });
-        
+
         parent.orderTransactionsTab = Ext.create('Ext.container.Container', {
-            title: '{s name=order_view/tab/title}PostFinance Checkout Payment{/s}',
+            title: '{s name="order_view/tab/title"}PostFinance Checkout Payment{/s}',
             disabled: parent.record.get('id') === null,
             layout: 'border',
             items: [

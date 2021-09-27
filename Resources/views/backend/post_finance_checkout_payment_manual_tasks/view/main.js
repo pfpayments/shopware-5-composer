@@ -14,19 +14,19 @@ Ext.define('Shopware.apps.PostFinanceCheckoutPaymentManualTasksWidget.view.Main'
     extend: 'Shopware.apps.Index.view.widgets.Base',
 
     alias: 'widget.postfinancecheckout-payment-manual-tasks',
-    
-    title: '{s name=manual_task/window/title}PostFinance Checkout Payment - Manual Tasks{/s}',
-    
+
+    title: '{s name="manual_task/window/title"}PostFinance Checkout Payment - Manual Tasks{/s}',
+
     minHeight: 0,
 
     snippets: {
         button: '{s name=manual_task/info_button}View in PostFinance Checkout{/s}',
-        dataLabel: '{s name=manual_task/text}Number of manual tasks that need your attention{/s}'
+        dataLabel: '{s name="manual_task/text"}Number of manual tasks that need your attention{/s}'
     },
 
     initComponent: function() {
         var me = this;
-        
+
         me.items = [];
 
         me.tools = [{

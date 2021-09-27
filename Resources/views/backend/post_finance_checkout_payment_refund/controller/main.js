@@ -11,30 +11,30 @@
 //{block name="backend/postfinancecheckout_payment_refund/controller/main"}
 //{namespace name=backend/postfinancecheckout_payment/main}
 Ext.define('Shopware.apps.PostFinanceCheckoutPaymentRefund.controller.Main', {
-    
+
     extend: 'Ext.app.Controller',
-    
+
     views: [ 'main.Window', 'main.Form' ],
-    
+
     refs: [
         { ref: 'refundForm', selector: 'postfinancecheckout-payment-refund-main-form' },
         { ref: 'transactionView', selector: 'postfinancecheckout-payment-transaction-transaction' },
         { ref: 'refundGrid', selector: 'postfinancecheckout-payment-transaction-refunds-grid' }
     ],
-    
+
     snippets: {
         createRefund: {
-            successMessage: '{s name=refund/message/create_success}The refund has been successfully created.{/s}',
-            failureMessage: '{s name=refund/message/create_failure}An error has occurred while creating the refund.{/s}'
+            successMessage: '{s name="refund/message/create_success"}The refund has been successfully created.{/s}',
+            failureMessage: '{s name="refund/message/create_failure"}An error has occurred while creating the refund.{/s}'
         },
-        growlTitle: '{s name=growl_title}PostFinance Checkout Payment{/s}'
+        growlTitle: '{s name="growl_title"}PostFinance Checkout Payment{/s}'
     },
-    
+
     mainWindow: null,
 
     init: function() {
         var me = this;
-        
+
         me.control({
             'postfinancecheckout-payment-refund-main-window button[action=postfinancecheckout-payment-refund-main-window-cancel]': {
                 click: me.onCloseWindow

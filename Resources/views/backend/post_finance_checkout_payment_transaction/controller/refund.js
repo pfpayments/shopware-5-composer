@@ -11,20 +11,20 @@
 //{namespace name=backend/postfinancecheckout_payment/main}
 //{block name="backend/postfinancecheckout_payment_transaction/controller/refund"}
 Ext.define('Shopware.apps.PostFinanceCheckoutPaymentTransaction.controller.Refund', {
-    
+
     extend:'Ext.app.Controller',
-    
+
     refs: [
         { ref: 'refundGrid', selector: 'postfinancecheckout-payment-transaction-refunds-grid' }
     ],
-    
+
     snippets: {
         message: {
-            successful: '{s name=refund/message/marked_as_successful}The refund has been marked as successful.{/s}',
-            failed: '{s name=refund/message/marked_as_failed}The refund has been marked as failed.{/s}',
-            exception: '{s name=message/error}There has been an exception.{/s}'
+            successful: '{s name="refund/message/marked_as_successful"}The refund has been marked as successful.{/s}',
+            failed: '{s name="refund/message/marked_as_failed"}The refund has been marked as failed.{/s}',
+            exception: '{s name="message/error"}There has been an exception.{/s}'
         },
-        growlTitle: '{s name=growl_title}PostFinance Checkout Payment{/s}'
+        growlTitle: '{s name="growl_title"}PostFinance Checkout Payment{/s}'
     },
 
     init:function () {
