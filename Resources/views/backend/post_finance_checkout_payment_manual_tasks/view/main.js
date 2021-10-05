@@ -20,7 +20,7 @@ Ext.define('Shopware.apps.PostFinanceCheckoutPaymentManualTasksWidget.view.Main'
     minHeight: 0,
 
     snippets: {
-        button: '{s name=manual_task/info_button}View in PostFinance Checkout{/s}',
+        button: '{s name="manual_task/info_button"}View in PostFinance Checkout{/s}',
         dataLabel: '{s name="manual_task/text"}Number of manual tasks that need your attention{/s}'
     },
 
