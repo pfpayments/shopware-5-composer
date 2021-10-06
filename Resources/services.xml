@@ -256,7 +256,7 @@
         <!-- Commands -->
         
         <service id="postfinancecheckout_payment.commands.transaction_update" class="PostFinanceCheckoutPayment\Commands\UpdateTransactionCommand" public="true">
-			<tag name="console.command"/>
-		</service>
+            <tag name="console.command" command="postfinancecheckout_payment:transaction:update" />
+        </service>
     </services>
 </container>
