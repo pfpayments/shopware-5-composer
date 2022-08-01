@@ -3,7 +3,7 @@
 /**
  * PostFinance Checkout Shopware 5
  *
- * This Shopware 5 extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/checkout/).
+ * This Shopware 5 extension enables to process payments with PostFinance Checkout (https://postfinance.ch/en/business/products/e-commerce/postfinance-checkout-all-in-one.html/).
  *
  * @package PostFinanceCheckout_Payment
  * @author wallee AG (http://www.wallee.com/)
@@ -14,14 +14,18 @@
     <label lang="de">PostFinance Checkout Payment</label>
     <label lang="en">PostFinance Checkout Payment</label>
 
-    <version>1.1.12</version>
+    <version>1.1.14</version>
     <copyright>(c) by wallee AG</copyright>
     <license>Apache-2.0</license>
-    <link>https://www.postfinance.ch/checkout</link>
+    <link>https://postfinance.ch/en/business/products/e-commerce/postfinance-checkout-all-in-one.html</link>
     <author>wallee AG</author>
 
     <description lang="de">wallee-Integration für Shopware 5</description>
     <description lang="en">wallee Integration for Shopware 5</description>
+    <changelog version="1.1.14">
+        <changes lang="en">Provides order comment</changes>
+        <changes lang="de">Übermittelt Bestellkommentar</changes>
+    </changelog>
     <changelog version="1.1.10">
         <changes lang="en">Add command to services.xml</changes>
         <changes lang="de">Befehl zu services.xml hinzufügen</changes>

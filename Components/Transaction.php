@@ -3,7 +3,7 @@
 /**
  * PostFinance Checkout Shopware 5
  *
- * This Shopware 5 extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/checkout/).
+ * This Shopware 5 extension enables to process payments with PostFinance Checkout (https://postfinance.ch/en/business/products/e-commerce/postfinance-checkout-all-in-one.html/).
  *
  * @package PostFinanceCheckout_Payment
  * @author wallee AG (http://www.wallee.com/)
@@ -630,6 +630,10 @@ class Transaction extends AbstractService
         
         $pluginConfig = $this->configReader->getByPluginName('PostFinanceCheckoutPayment', $order->getShop());
 
+        if($pluginConfig['provideOrderComment']){
+            $transaction->setMetaData($this->getOrderComment($order));
+        }
+
         if ($transaction instanceof \PostFinanceCheckout\Sdk\Model\TransactionCreate) {
             $transaction->setSpaceViewId($pluginConfig['spaceViewId']);
             $transaction->setAutoConfirmationEnabled(false);
@@ -664,7 +668,7 @@ class Transaction extends AbstractService
         /* @var Customer $customer */
         $customer = $this->modelManager->getRepository(Customer::class)->find($this->container->get('session')
             ->get('sUserId'));
-        
+
         $currency = Shopware()->Shop()->getCurrency()->getCurrency();
         if (empty($currency)) {
             $currency = 'EUR';
@@ -679,7 +683,7 @@ class Transaction extends AbstractService
         }
         $transaction->setLanguage($shop->getLocale()
             ->getLocale());
-        
+
         $pluginConfig = $this->configReader->getByPluginName('PostFinanceCheckoutPayment', $shop);
 
         if ($transaction instanceof \PostFinanceCheckout\Sdk\Model\TransactionCreate) {
@@ -937,5 +941,24 @@ class Transaction extends AbstractService
             $this->modelManager = $this->modelManager->create($this->modelManager->getConnection(), $this->modelManager->getConfiguration());
         }
         return $this->modelManager;
+    }
+
+    /**
+     * Add customer comment to wallee transaction as meta_data.
+     * @param \Shopware\Models\Order\Order $order
+     * @return array (key,value) - Order comment (max limit 512 chars) if exist, otherwise empty string.
+     */
+    private function getOrderComment(Order $order) {
+        $orderComment = '';
+
+        if ($orderComment = $order->getCustomerComment()){
+            $orderComment = substr($order->getCustomerComment(),0,512);
+        }
+
+        $metaData = [
+            'orderComment' => $orderComment,
+        ];
+
+        return $metaData;
     }
 }

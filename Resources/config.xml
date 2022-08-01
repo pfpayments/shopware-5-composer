@@ -3,7 +3,7 @@
 /**
  * PostFinance Checkout Shopware 5
  *
- * This Shopware 5 extension enables to process payments with PostFinance Checkout (https://www.postfinance.ch/checkout/).
+ * This Shopware 5 extension enables to process payments with PostFinance Checkout (https://postfinance.ch/en/business/products/e-commerce/postfinance-checkout-all-in-one.html/).
  *
  * @package PostFinanceCheckout_Payment
  * @author wallee AG (http://www.wallee.com/)
@@ -124,6 +124,14 @@
 			<label lang="de">Fehlgeschlagene Bestellungen löschen</label>
 			<label lang="en">Delete failed orders</label>
 			<value>0</value>
+        </element>
+        <element type="boolean" scope="shop">
+            <name>provideOrderComment</name>
+            <label lang="de">Bestellkommentar übermitteln</label>
+            <label lang="en">Provide order comment</label>
+            <value>0</value>
+            <description lang="de">Dokumenttemplate invoice.twig muss mit dem Baustein {{transaction.metaData.orderComment}} ergänzt werden.</description>
+            <description lang="en">Block {{transaction.metaData.orderComment}} must be added to documenttemplate invocie.twig</description>
         </element>
         <element type="boolean" scope="shop">
 			<name>enforceLineItemConsistency</name>
