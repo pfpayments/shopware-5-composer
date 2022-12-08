@@ -14,14 +14,29 @@
     <label lang="de">PostFinance Checkout Payment</label>
     <label lang="en">PostFinance Checkout Payment</label>
 
-    <version>1.1.16</version>
+    <version>1.1.17</version>
     <copyright>(c) by wallee AG</copyright>
     <license>Apache-2.0</license>
     <link>https://postfinance.ch/en/business/products/e-commerce/postfinance-checkout-all-in-one.html</link>
     <author>wallee AG</author>
 
-    <description lang="de">wallee-Integration für Shopware 5</description>
-    <description lang="en">wallee Integration for Shopware 5</description>
+    <description lang="de">postfinancecheckout-Integration für Shopware 5</description>
+    <description lang="en">postfinancecheckout Integration for Shopware 5</description>
+    <description lang="it">postfinancecheckout Integrazione per shopware 5</description>
+    <description lang="fr">postfinancecheckout Intégration pour Shopware 5</description>
+
+    <changelog version="1.1.17">
+        <changes lang="en">Add translation in French and Italian; Fix incorrect status when using 'PostFinance ISR processor'</changes>
+        <changes lang="de">Übersetzung in Französisch und Italienisch hinzufügen; Falschen Status bei Verwendung von 'PostFinance ESR-Prozessor' behoben</changes>
+    </changelog>
+    <changelog version="1.1.16">
+        <changes lang="en">Fix transactionsID from table 'cwb_postfinancecheckout_payment_order_transaction_mapping' to be transfered to the Shopware-order-table. Added analytics headers.</changes>
+        <changes lang="de">Fixieren Sie die Transaktions-ID aus der Tabelle 'cwb_postfinancecheckout_payment_order_transaction_mapping', die in die Shopware-Bestelltabelle übertragen werden soll. Analytics-Header hinzugefügt.</changes>
+    </changelog>
+    <changelog version="1.1.15">
+        <changes lang="en">Send checkout notes to portal</changes>
+        <changes lang="de">Checkout-Notizen an das Portal senden</changes>
+    </changelog>
     <changelog version="1.1.14">
         <changes lang="en">Provides order comment</changes>
         <changes lang="de">Übermittelt Bestellkommentar</changes>
