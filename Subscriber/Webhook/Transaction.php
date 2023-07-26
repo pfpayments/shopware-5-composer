@@ -16,6 +16,7 @@ use Psr\Log\LoggerInterface;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Components\Plugin\ConfigReader;
 use Shopware\Components\ShopRegistrationServiceInterface;
+use Shopware\Models\Article\Detail;
 use Shopware\Models\Order\Order;
 use Shopware\Models\Order\Status;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -210,6 +211,9 @@ class Transaction extends AbstractOrderRelatedSubscriber
     private function failed(Order $order, \PostFinanceCheckout\Sdk\Model\Transaction $transaction)
     {
         try {
+            $this->handleShippingCosts($order);
+            $this->handleOrderInstock($order);
+
             $pluginConfig = $this->configReader->getByPluginName('PostFinanceCheckoutPayment', $order->getShop());
             if ((boolean) $pluginConfig['orderRemoveFailed']) {
                 $this->transactionInfoService->updateTransactionInfoByOrder($transaction, $order);
@@ -339,5 +343,48 @@ class Transaction extends AbstractOrderRelatedSubscriber
         if ($shopBackup != null) {
 			$this->shopRegistrationService->registerResources($shopBackup);
         }
+    }
+
+    private function handleOrderInstock(Order $order)
+    {
+        foreach($order->getDetails() as $orderDetail) {
+            $quantity = $orderDetail->getQuantity();
+
+            // If quantity is 0 skip
+            if($quantity === 0) {
+                continue;
+            }
+
+            // Set orderdetail quantity to 0
+            $orderDetail->setQuantity(0);
+
+            // Check if pickware attribute does exist. If it does, we have to calculate and set the canceled quantity
+            $orderDetailAttribute = $orderDetail->getAttribute();
+            if(method_exists($orderDetailAttribute, 'setPickwareCanceledQuantity')) {
+                $pickwareCanceledQuantity = $orderDetailAttribute->getPickwareCanceledQuantity();
+                $orderDetailAttribute->setPickwareCanceledQuantity($pickwareCanceledQuantity + $quantity);
+            }
+
+            // Save everything
+            $this->modelManager->flush([$orderDetail, $orderDetailAttribute, $order]);
+
+            // Update article detail to save the instock
+            $articleDetail = $this->modelManager->getRepository(Detail::class)->findOneBy([
+                'number' => $orderDetail->getArticleNumber(),
+            ]);
+
+            if ($articleDetail) {
+                $this->modelManager->flush($articleDetail);
+            }
+        }
+    }
+
+    private function handleShippingCosts(Order $order)
+    {
+        $order->setInvoiceShipping(0.0);
+        $order->setInvoiceShippingNet(0.0);
+
+        $order->calculateInvoiceAmount();
+        $this->modelManager->flush($order);
     }
 }
